@@ -2,7 +2,8 @@ const express = require('express')
 const dotenv = require('dotenv')
 const PORT = process.env.PORT || 5000
 const app = express()
-const models = require('./models')
+//const models = require('./models')
+const bookRoutes = require('./routes/book.routes')
 
 dotenv.config()
 
@@ -12,11 +13,13 @@ app.get('/api/test', (req, res) => {
     res.json({'message': 'ok'})
 })
 
-models.sequelize.sync().then(() => {
-    console.log('Db Nice!')
-}).catch((err) => {
-    console.log(err, 'Error Database!')
-})
+// models.sequelize.sync().then(() => {
+//     console.log('Db Nice!')
+// }).catch((err) => {
+//     console.log(err, 'Error Database!')
+// })
+
+bookRoutes(app);
 
 /* Error handler middleware */
 app.use((err, req, res, next) => {
