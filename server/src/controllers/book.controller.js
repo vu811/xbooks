@@ -1,5 +1,5 @@
-const model = require('../models')
-const Book = model.Book
+const model = require('../models');
+const Book = model.Book;
 
 exports.create = async (req, res) => {
     //TODO: validate request
@@ -7,7 +7,6 @@ exports.create = async (req, res) => {
         name: req.body.name,
         author: req.body.author
     };
-    console.log('no', req.body)
     try {
         const book = await Book.create(newBook);
         res.status(201).json(book);
