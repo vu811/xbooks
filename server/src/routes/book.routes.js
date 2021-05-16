@@ -1,8 +1,10 @@
-module.exports = app => {
-    const controller = require('../controllers/book.controller.js');
-    const router = require('express').Router();
+const bookControler = require('../controllers/book.controller');
+const router = require('express').Router();
+const createBookValidate = require('../validators/book.validator');
 
-    router.post('/', controller.create);
+// @route   POST  /api/books
+// @desc    Create book
+// @access  Private
+router.post('/', createBookValidate(), bookControler.create);
 
-    app.use('/api/books', router);
-}
+module.exports = router;
