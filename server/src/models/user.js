@@ -3,43 +3,60 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Book extends Model {
+  class User extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      console.log('models', models)
-      Book.belongsTo(models.User, {
+      User.hasMany(models.Book, {
         foreignKey: {
           name: 'userId',
           allowNull: false
         },
         as: 'books'
       });
+      User.belongsToMany(models.Role, {
+        through: "UserRole",
+        foreignKey: 'userId',
+        as: 'roles'
+      });
     }
   };
-  Book.init({
-    name: {
+  User.init({
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    author: {
+    lastName: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    price: {
-      type: DataTypes.INTEGER,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true
+      },
+      unique: true
+    },
+    phone: {
+      type: DataTypes.STRING,
       allowNull: false
     },
-    originalPrice: {
-      type: DataTypes.INTEGER
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    avatarUrl: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
     sequelize,
-    paranoid: true, // Support soft-deletion
-    modelName: 'Book',
+    paranoid: true,
+    modelName: 'User',
   });
-  return Book;
+  return User;
 };

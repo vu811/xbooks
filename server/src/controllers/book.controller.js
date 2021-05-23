@@ -3,7 +3,7 @@ const asyncHandler = require('../middlewares/asyncHandler');
 const { validationResult } = require('express-validator');
 const Book = model.Book;
 
-exports.create = asyncHandler(async (req, res) => {
+exports.createBooks = asyncHandler(async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         res.status(422).json({

@@ -5,6 +5,6 @@ const createBookValidate = require('../validators/book.validator');
 // @route   POST  /api/books
 // @desc    Create book
 // @access  Private
-router.post('/', createBookValidate(), bookControler.create);
+router.post('/', createBookValidate(), bookControler.createBooks);
 
 module.exports = router;
