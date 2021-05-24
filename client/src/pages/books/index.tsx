@@ -1,11 +1,7 @@
-import React from 'react'
+import React, { FC } from 'react';
 
-const Books: React.FC = () => {
-  return (
-    <h1>
-      Books
-    </h1>
-  )
-}
+const Books: FC = () => {
+  return <h1>Books</h1>;
+};
 
-export default Books
+export default Books;
