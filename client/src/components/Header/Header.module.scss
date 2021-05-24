@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  background: #001529;
+
+  .logo {
+    margin-right: 10px;
+
+    img {
+      width: 30px;
+      cursor: pointer;
+    }
+  }
+
+  .menu {
+    border-bottom: none;
+    background: none;
+  }
+}
