@@ -22,42 +22,44 @@ const Header: FC = () => {
   };
 
   return (
-    <div className={styles.header}>
+    <header className={styles.header}>
       <div className={styles.logo}>
-        <Link href='/'>
+        {/* <Link href='/'>
           <img src='/logo-x.png' alt='logo' onClick={() => setCurrent(null)} />
-        </Link>
+        </Link> */}
+        XBooks
       </div>
-      <Menu
-        onClick={handleClick}
-        selectedKeys={[current]}
-        mode='horizontal'
-        className={styles.menu}
-        theme='dark'
-      >
-        <SubMenu key='books' icon={<ReadOutlined />} title='Books'>
-          <Menu.ItemGroup title='Nonfiction'>
-            <Menu.Item key='business'>Business/economics</Menu.Item>
-            <Menu.Item key='health'>Health/fitness</Menu.Item>
-            <Menu.Item key='science'>Science</Menu.Item>
-          </Menu.ItemGroup>
-          <Menu.ItemGroup title='Fiction'>
-            <Menu.Item key='romance'>Romance</Menu.Item>
-            <Menu.Item key='horror'>Horror</Menu.Item>
-            <Menu.Item key='comic'>Comic book</Menu.Item>
-          </Menu.ItemGroup>
-        </SubMenu>
-        <Menu.Item key='giveaway' disabled icon={<GiftOutlined />}>
-          Giveaway
+      <div className={styles.menu}>
+        <Menu
+          onClick={handleClick}
+          selectedKeys={[current]}
+          mode='horizontal'
+          theme='dark'
+        >
+          <SubMenu key='books' icon={<ReadOutlined />} title='Books'>
+            <Menu.ItemGroup title='Nonfiction'>
+              <Menu.Item key='business'>Business/economics</Menu.Item>
+              <Menu.Item key='health'>Health/fitness</Menu.Item>
+              <Menu.Item key='science'>Science</Menu.Item>
+            </Menu.ItemGroup>
+            <Menu.ItemGroup title='Fiction'>
+              <Menu.Item key='romance'>Romance</Menu.Item>
+              <Menu.Item key='horror'>Horror</Menu.Item>
+              <Menu.Item key='comic'>Comic book</Menu.Item>
+            </Menu.ItemGroup>
+          </SubMenu>
+          <Menu.Item key='giveaway' disabled icon={<GiftOutlined />}>
+            Giveaway
         </Menu.Item>
-        <Menu.Item key='register' icon={<UserAddOutlined />}>
-          Register
+          <Menu.Item key='register' icon={<UserAddOutlined />}>
+            Register
         </Menu.Item>
-        <Menu.Item key='login' icon={<LoginOutlined />}>
-          Login
+          <Menu.Item key='login' icon={<LoginOutlined />}>
+            Login
         </Menu.Item>
-      </Menu>
-    </div>
+        </Menu>
+      </div>
+    </header>
   );
 };
 

@@ -2,10 +2,15 @@
   display: flex;
   align-items: center;
   padding: 0 50px;
-  background: #001529;
+  background: #e62739;
+  height: 100px;
 
   .logo {
     margin-right: 10px;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+    font-weight: bold;
 
     img {
       width: 30px;
@@ -16,5 +21,9 @@
   .menu {
     border-bottom: none;
     background: none;
+    margin-left: 200px;
+    ul {
+      background: #e62739;
+    }
   }
 }

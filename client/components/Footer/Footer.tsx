@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import styles from './Footer.module.scss';
 
-const Footer: FC = () => {
+const Footer : FC = () => {
   return (
-    <div className={styles.footer}>X-Books ©2021 Created by Vu + Tuong</div>
+    <footer style={{ position: "sticky", bottom: "0" }} className={styles.footer}>X-Books ©2021 Created by Vu + Tuong</footer>
   );
 };
 
