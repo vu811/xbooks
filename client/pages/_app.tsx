@@ -1,7 +1,5 @@
 import Head from 'next/head';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
-import { Wrapper } from '../components/Wrapper';
+import { Layout } from '../components/Layout';
 import '../node_modules/antd/dist/antd.css';
 import '../styles/globals.scss';
 
@@ -12,9 +10,9 @@ function MyApp({ Component, pageProps }) {
         <title>X Books - Buy, sell and giveaway books.</title>
         <link rel='icon' href='/favicon.png' />
       </Head>
-      <Wrapper>
+      <Layout>
         <Component {...pageProps} />
-      </Wrapper>
+      </Layout>
     </>
   );
 }
