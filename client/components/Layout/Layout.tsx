@@ -3,14 +3,16 @@ import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { Layout as Layoutx } from 'antd';
 const { Content } = Layoutx;
-import styles from './Wrapper.module.scss';
+import styles from './Layout.module.scss';
 
-const Layout: FC = ({ children }) => {
+const Layout : FC = ({ children }) => {
   return (
-    <Layoutx className='layout'>
+    <Layoutx className={styles.layout} >
       <Header />
-      <Content>
-        <div className="site-layout-content">{children}</div>
+      <Content className={styles.main}>
+        <div className={styles.content}>
+          {children}
+        </div>
       </Content>
       <Footer />
     </Layoutx>

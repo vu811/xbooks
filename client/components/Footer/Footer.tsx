@@ -3,7 +3,11 @@ import styles from './Footer.module.scss';
 
 const Footer : FC = () => {
   return (
-    <footer style={{ position: "sticky", bottom: "0" }} className={styles.footer}>X-Books ©2021 Created by Vu + Tuong</footer>
+    <footer className={styles.footer}>
+      <div className={styles.copyrignt}>
+        Made with <span role='img' aria-label='heart' aria-hidden='false'>❤️</span> by XBOOKS
+      </div>
+    </footer>
   );
 };
 
