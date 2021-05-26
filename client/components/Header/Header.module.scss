@@ -1,29 +1,54 @@
+@import '../../assets/scss/colors';
+@import '../../assets/scss/variables';
+
 .header {
   display: flex;
   align-items: center;
   padding: 0 50px;
-  background: #e62739;
+  background: $xbooks-color;
   height: 100px;
-
   .logo {
     margin-right: 10px;
-    color: white;
+    color: $white-color;
     font-size: 30px;
-    text-transform: uppercase;
     font-weight: bold;
-
     img {
       width: 30px;
       cursor: pointer;
     }
   }
-
-  .menu {
-    border-bottom: none;
-    background: none;
-    margin-left: 200px;
-    ul {
-      background: #e62739;
+  .headerContent {
+    @include extra-small-devices {
+      width: 100%;
+    }
+    @include small-devices {
+        width: 100%;
+    }
+    @include medium-devices {
+        width: 100%;
+    }
+    @include large-devices {
+        width: 800px;
+    }
+    @include extra-large-devices {
+        width: 980px;
+    }
+    margin: 0 auto;
+  }
+  .headerLineSecond {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    .searchBox {
+      width: 80%;
+    }
+    .login {
+      font-size: 25px;
+      .loginText {
+        margin-left: 5px;
+        font-size: 16px;
+        font-weight: 500;
+      }
     }
   }
 }
