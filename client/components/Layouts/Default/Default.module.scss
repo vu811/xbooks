@@ -1,0 +1,34 @@
+@import '../../../assets/scss/colors';
+@import '../../../assets/scss/variables';
+
+.layout {
+    background-color: $bg-color !important;
+    min-height: 100vh !important;
+    .main {
+        margin: 0 auto;
+        margin-top: 100px;
+        @include xs {
+            width: 100%;
+        }
+        @include sm {
+              width: 100%;
+        }
+        @include md {
+              width: 100%;
+        }
+        @include lg {
+              width: 800px;
+        }
+        @include xl {
+              width: 980px;
+        }
+        @include xxl {
+            width: 980px;
+        }
+        .content {
+            width: 100%;
+            background-color: $white-color;
+            padding: 5%;
+        }
+    }
+}

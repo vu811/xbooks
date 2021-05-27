@@ -2,36 +2,37 @@
 @import '../../assets/scss/variables';
 
 .header {
-  display: flex;
-  align-items: center;
   padding: 0 50px;
   background: $xbooks-color;
   height: 100px;
+  position: fixed;
+  width: 100%;
+  top: 0;
   .logo {
     margin-right: 10px;
     color: $white-color;
     font-size: 30px;
     font-weight: bold;
-    img {
-      width: 30px;
-      cursor: pointer;
-    }
+    cursor: pointer;
   }
   .headerContent {
-    @include extra-small-devices {
+    @include xs {
       width: 100%;
     }
-    @include small-devices {
+    @include sm {
         width: 100%;
     }
-    @include medium-devices {
+    @include md {
         width: 100%;
     }
-    @include large-devices {
+    @include lg {
         width: 800px;
     }
-    @include extra-large-devices {
+    @include xl {
         width: 980px;
+    }
+    @include xxl {
+      width: 980px;
     }
     margin: 0 auto;
   }
@@ -44,6 +45,7 @@
     }
     .login {
       font-size: 25px;
+      cursor: pointer;
       .loginText {
         margin-left: 5px;
         font-size: 16px;

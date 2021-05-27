@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-const Books: FC = () => {
+const Books : FC = () => {
   return <h1>Books</h1>;
 };
 
