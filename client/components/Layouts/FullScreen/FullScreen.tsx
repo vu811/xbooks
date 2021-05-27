@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
-import { Header } from '../Header';
-import { Footer } from '../Footer';
+import { Header } from '../../Header';
+import { Footer } from '../../Footer';
 import { Layout as Layoutx } from 'antd';
 const { Content } = Layoutx;
-import styles from './Layout.module.scss';
+import styles from './FullScreen.module.scss';
 
-const Layout : FC = ({ children }) => {
+const Default : FC = ({ children }) => {
   return (
     <Layoutx className={styles.layout} >
       <Header />
@@ -19,4 +19,4 @@ const Layout : FC = ({ children }) => {
   );
 };
 
-export default Layout;
+export default Default;
