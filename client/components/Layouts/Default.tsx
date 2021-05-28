@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { Header } from '../../Header';
-import { Footer } from '../../Footer';
+import { Header } from 'components/Header';
+import { Footer } from 'components/Footer';
 import { Layout as Layoutx } from 'antd';
 const { Content } = Layoutx;
-import styles from './FullScreen.module.scss';
+import styles from './scss/Default.module.scss';
 
 const Default : FC = ({ children }) => {
   return (
