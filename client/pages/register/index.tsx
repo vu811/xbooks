@@ -32,6 +32,9 @@ const Register = () => {
           <Button className={styles.btnSocialMedia} icon={<GoogleOutlined />} type="primary" danger>Google</Button>
           </Col>
         </Row>
+        <Row className={styles.alreadyExistedAccount}>
+          <div>Bạn đã có tài khoản? <span><a href='/login'>Đăng nhập</a></span></div>
+        </Row>
       </Form> 
       </div>
     </div>
