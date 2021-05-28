@@ -39,3 +39,11 @@
         @content;
     }
 }
+
+@mixin border-radius($numberOfPx) {
+    -moz-border-radius: #{$numberOfPx}px;
+    -webkit-border-radius: #{$numberOfPx}px;
+    -ms-border-radius: #{$numberOfPx}px;
+    -o-border-radius: #{$numberOfPx}px;
+    border-radius: #{$numberOfPx}px;
+}

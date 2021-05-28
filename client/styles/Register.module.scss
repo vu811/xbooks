@@ -1,3 +1,28 @@
+@import 'assets/scss/colors';
+@import 'assets/scss/variables';
+
 .register {
-    
+    width: 25%;
+    margin: 0 auto;
+    background-color: $white-color;
+    padding: 2%;
+    @include border-radius(5);
+    .formItem {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+    .devider {
+        color: $xbooks-color;
+    }
+    .btnSocialMedia {
+        width: 100%;
+    }
+    .signUpTitle {
+        font-weight: 500;
+        font-size: 20px;
+    }
+    .btnSignUp {
+        width: 100%;
+        text-transform: uppercase;
+    }
 }
