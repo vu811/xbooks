@@ -6,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
   class UserRole extends Model {};
   UserRole.init({
     userId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false
     },
     roleId: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.UUID,
       allowNull: false
     },
   }, {

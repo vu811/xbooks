@@ -25,33 +25,37 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
+      primaryKey: true
+    },
     firstName: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     lastName: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        isEmail: true
+        isEmail: {
+          msg: 'Invalid email format.'
+        }
       },
       unique: true
     },
     phone: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     },
-    password: {
+    hashedPassword: {
       type: DataTypes.STRING,
       allowNull: false
     },
     avatarUrl: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     }
   }, {
     sequelize,
