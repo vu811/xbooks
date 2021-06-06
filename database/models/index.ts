@@ -8,6 +8,10 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+const models = process.cwd() + '\\database\\models' || __dirname;
+
+console.log('dir', fs.readdirSync(models))
+
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
@@ -16,18 +20,22 @@ if (config.use_env_variable) {
 }
 
 fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
+  //.readdirSync(__dirname)
+  .readdirSync(models)
+  .filter((file: any) => {
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.ts');
   })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+  .forEach((file : any) => {
+    //const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    //console.log('file', model)
+    const model = require(__dirname + '/../models/'+file)(sequelize, Sequelize.DataTypes);
+    console.log('MODEL', model)
+
     db[model.name] = model;
   });
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
-    console.log('db', db)
     db[modelName].associate(db);
   }
 });
@@ -35,4 +43,7 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+console.log('cmm', db.User)
+
+
+module.exports = { hihi: 'fd'};
