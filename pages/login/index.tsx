@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { Form, Input, Button, Row, Divider } from 'antd'
 import Link from 'next/link'
-import { providers, getSession, csrfToken } from 'next-auth/client'
+import { providers, getSession } from 'next-auth/client'
 import { GetServerSideProps } from 'next'
 import { AuthProvider } from 'components/commons/authProvider'
 import { AuthProviderProps } from 'components/commons/authProvider/AuthProvider'
@@ -22,9 +22,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      session: null,
       providers: await providers(),
-      csrfToken: await csrfToken(context),
       isSignLayout: true,
       headerText: 'Đăng nhập'
     }
