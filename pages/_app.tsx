@@ -1,10 +1,14 @@
-import Head from 'next/head';
-import { DefaultLayout } from '../components/Layouts';
-import '../node_modules/antd/dist/antd.css';
-import '../styles/globals.scss';
+import Head from 'next/head'
+import { Provider } from 'next-auth/client'
+import { DefaultLayout } from '../components/layouts'
+import { SignLayout } from 'components/layouts'
+import '../node_modules/antd/dist/antd.css'
+import '../styles/globals.scss'
+import { AppProps } from 'next/app'
 
-function MyApp({ Component, pageProps }) {
-  const Layout = Component.Layout || DefaultLayout;
+function MyApp({ Component, pageProps }: AppProps) {
+  const { isSignLayout, headerText } = pageProps
+  const Layout = isSignLayout ? SignLayout : DefaultLayout
   return (
     <>
       <Head>
@@ -12,11 +16,13 @@ function MyApp({ Component, pageProps }) {
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         <link rel='icon' href='/favicon.png' />
       </Head>
-      <Layout>
-        <Component {...pageProps} headerText={Component.HeaderText} />
+      <Layout headerText={headerText}>
+        <Provider session={pageProps.session}>
+          <Component {...pageProps} />
+        </Provider>
       </Layout>
     </>
-  );
+  )
 }
 
-export default MyApp;
+export default MyApp

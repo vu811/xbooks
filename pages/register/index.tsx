@@ -1,22 +1,49 @@
-import React, { FC, useState } from 'react';
-import { SignLayout } from 'components/Layouts';
-import { Form, Input, Button, Row, Col, Divider } from 'antd';
-import {
-  FacebookOutlined,
-  GoogleOutlined
-} from '@ant-design/icons';
+import React, { FC, useState } from 'react'
+import styles from 'styles/Register.module.scss'
+import { Form, Input, Button, Row, Divider } from 'antd'
+import { providers, getSession } from 'next-auth/client'
+import Link from 'next/link'
+import { GetServerSideProps } from 'next'
+import { AuthProvider } from 'components/commons/authProvider'
+import { AuthProviderProps } from 'components/commons/authProvider/AuthProvider'
 
-import styles from 'styles/Register.module.scss';
-interface RegisterProps {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, res } = context
+  const session = await getSession({ req })
+  if (session && res && session.accessToken) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false
+      }
+    }
+  }
 
+  return {
+    props: {
+      providers: await providers(),
+      isSignLayout: true,
+      headerText: 'Đăng ký'
+    }
+  }
 }
 
-const Register: FC<RegisterProps> = () => {
+const Register: FC<AuthProviderProps> = ({ providers }) => {
   const [form] = Form.useForm()
   const [isFormInvalid, setIsFormInvalid] = useState(false)
 
-  const handleRegister = (values: any) => {
-    console.log('sucess', values)
+  const handleRegister = async (values: any) => {
+    const { email, password } = values
+    try {
+      const body = { email, password }
+      await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   const onRegisterFailed = (errorInfo: any) => {
@@ -32,12 +59,7 @@ const Register: FC<RegisterProps> = () => {
     <div className={styles.register}>
       <div className={styles.signUpTitle}>Đăng ký</div>
       <div>
-        <Form
-          form={form}
-          onFinish={handleRegister}
-          onFinishFailed={onRegisterFailed}
-          onFieldsChange={handleOnFieldChange}
-        >
+        <Form form={form} onFinish={handleRegister} onFinishFailed={onRegisterFailed} onFieldsChange={handleOnFieldChange}>
           <div className={styles.formItem}>
             <Form.Item
               name='email'
@@ -62,35 +84,22 @@ const Register: FC<RegisterProps> = () => {
             </Form.Item>
           </div>
           <div className={styles.formItem}>
-            <Button
-              htmlType='submit'
-              className={styles.btnSignUp}
-              type='primary'
-              danger
-              disabled={isFormInvalid}
-            >
+            <Button htmlType='submit' className={styles.btnSignUp} type='primary' danger disabled={isFormInvalid}>
               Đăng ký
             </Button>
           </div>
-          <Divider className={styles.devider}>HOẶC</Divider>
+          <Divider className={styles.devider}>hoặc sử dụng</Divider>
           <Row gutter={[8, 8]}>
-            <Col span={12}>
-              <Button className={styles.btnSocialMedia} icon={<FacebookOutlined />} type='primary'>Facebook</Button>
-            </Col>
-            <Col span={12}>
-              <Button className={styles.btnSocialMedia} icon={<GoogleOutlined />} type='primary' danger>Google</Button>
-            </Col>
+            <AuthProvider providers={providers} />
           </Row>
           <Row className={styles.alreadyExistedAccount}>
-            <div>Bạn đã có tài khoản? <span><a href='/login'>Đăng nhập</a></span></div>
+            <div>
+              Bạn đã có tài khoản? <Link href='/login'>Đăng nhập</Link>
+            </div>
           </Row>
         </Form>
       </div>
     </div>
   )
-};
-
-Register.Layout = SignLayout;
-Register.HeaderText = 'Đăng ký';
-
-export default Register;
+}
+export default Register
