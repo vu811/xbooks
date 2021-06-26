@@ -1,0 +1,64 @@
+@import 'assets/scss/colors';
+@import 'assets/scss/variables';
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  background: $xbooks-color;
+  height: 100px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  .logo {
+    margin-right: 10px;
+    color: $white-color;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .headerContent {
+    @include xs {
+      width: 100%;
+    }
+    @include sm {
+      width: 100%;
+    }
+    @include md {
+      width: 100%;
+    }
+    @include lg {
+      width: 800px;
+    }
+    @include xl {
+      width: 980px;
+    }
+    @include xxl {
+      width: 980px;
+    }
+    margin: 0 auto;
+  }
+  .headerLineSecond {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    .searchBox {
+      width: 80%;
+    }
+    .login {
+      font-size: 25px;
+      cursor: pointer;
+      .loginText {
+        margin-left: 5px;
+        font-size: 16px;
+        font-weight: 500;
+        color: $white-color;
+      }
+    }
+  }
+  .userSection {
+    display: flex;
+    align-items: center;
+  }
+}
